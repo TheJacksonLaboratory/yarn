@@ -93,6 +93,52 @@ skin_filtered = normalizeTissueAware(skin_filtered,"SMTSD")
 plotDensity(skin_filtered,"SMTSD",normalized=TRUE,main="Normalized")
 ```
 
+
+6. Extract GTEx version 8.0 RNA-seq and genotype data (phs000424.v8.v2), released 2019-08-26.
+
+Make sure all the dependent packages are installed:
+
+```R
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("yarn")
+BiocManager::install("downloader")
+BiocManager::install("readr")
+BiocManager::install("biomaRt")
+```
+
+This command, will download GTEx version 8.0 and output an RDS version to a local subdirectory (which should already exist).   The file will be written to: data/gtex.rds.
+
+```R
+library(yarn)
+library(downloader)
+library(readr)
+library(biomaRt)
+
+obj <- downloadGTExV8(type='genes',file='data/gtex.rds')
+
+```
+
+To the file is correctly downloaded, the user can use the table command on either
+
+```R
+table(pData(obj)$SMTSD)
+
+```
+
+Which the user could optionally write to a file
+
+```R
+
+write.csv(table(pData(obj)$SMTSD),file='data/gtex.SMTSD')
+```
+
+Alternatively,
+
+```R
+table(pData(obj)$SMTS)
+```
+
 ## Helper functions
 
 Other than `checkMisAnnotation` and `checkTissuesToMerge` we provide a few plotting function.
