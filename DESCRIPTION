@@ -4,7 +4,6 @@ Title: YARN: Robust Multi-Condition RNA-Seq Preprocessing and
 Version: 1.13.1
 Authors@R: c(person(given = "Joseph N","Paulson",email =
         "paulson.joseph@gene.com",role = c("aut", "cre")),
-	person("Anne", "Deslattes Mays", email="adeslatt@gmail.com", rol = c("aut")),
         person("Cho-Yi","Chen",role="aut"),
         person("Camila","Lopes-Ramos",role="aut"),
         person("Marieke","Kuijjer",role="aut"),
